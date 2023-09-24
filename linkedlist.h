@@ -15,9 +15,10 @@ list *head = NULL; // The first node
 list *curr; // Temporary current node
 list *prev; // Temporary previous node
 list *insert; // New node to insert
-int currentID_L = 0;
+int currentID_L = 0; // Assign ID # to each user
 
 
+// Creates and returns a struct of type list
 list* createUserLinear(char *name) {
     insert = (list*) malloc(sizeof(list));
     strcpy(insert->name, name);
@@ -32,7 +33,7 @@ list* createUserLinear(char *name) {
     return insert;
 }
 
-
+// Loops through linked list, returns true if user is found
 bool findUserLinear(char *name) {
     curr = head;
     while(curr != NULL)
@@ -49,7 +50,7 @@ bool findUserLinear(char *name) {
     return false;
 }
 
-
+// Inserting users in alphabetical order
 void insertUserLinear() {
     int i;
     char inputName [15];

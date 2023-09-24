@@ -1,3 +1,7 @@
+/*
+
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -13,8 +17,8 @@ typedef struct tree{
 } tree;
 
 tree *root = NULL;
-tree *leaf;
-int currentID_B = 0;
+tree *leaf; // New node to insert
+int currentID_B = 0; // Assign ID # to each user
 
 
 tree* createUserBinary(char *name) {
