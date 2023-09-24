@@ -1,6 +1,14 @@
-/*
-
-*/
+/********************************************************************************************
+ * File: binarytree.h
+ * Author: Ronaldo R Baker 
+ * Date: Last modified 24 SEP 2023
+ * Description:
+ * The functions in the binary search tree version of the contact tracing app 
+ * utilise recursion to complete the same tasks as the linked list version. 
+ * This requires some operations to be executed in a different manner
+ * Each function related to binary trees is labelled 'Binary', with the exception of 
+ * 'retrieveData' which is defined in 'linkedlist.h'.
+*********************************************************************************************/
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -20,7 +28,7 @@ tree *root = NULL;
 tree *leaf; // New node to insert
 int currentID_B = 0; // Assign ID # to each user
 
-
+// Creates and returns struct of type tree
 tree* createUserBinary(char *name) {
     leaf = (tree*) malloc(sizeof(tree));
     strcpy(leaf->name, name);
@@ -35,7 +43,7 @@ tree* createUserBinary(char *name) {
     return leaf;
 }
 
-
+// Searches in pre-order traversal, returns true if user found
 bool findUserBinary(tree *root, char *name) {
     if (root == NULL) 
     {
@@ -56,7 +64,7 @@ bool findUserBinary(tree *root, char *name) {
     return false;
 }
 
-
+// Inserting in the tree in 'alphabetical' order using strcmp
 int insertUserBinary(tree **rootptr, char *name) {
     tree *root = *rootptr;
     if (root == NULL)
@@ -76,7 +84,7 @@ int insertUserBinary(tree **rootptr, char *name) {
     return 0;
 }
 
-
+// Inputting a site number (integer) where a user has been
 int logSiteBinary(tree *root, char *name, int site) {
     int i = 0;
     if(root == NULL)
@@ -103,7 +111,9 @@ int logSiteBinary(tree *root, char *name, int site) {
     return 1;
 }
 
-
+// Finds the minimum value of the right hand branch
+// Used in order to complete case 3 node removal where 
+// the node to be removed has two children
 tree* getRMin(tree *root) {
     tree *temp = root;
     while (temp->left != NULL)
@@ -113,7 +123,7 @@ tree* getRMin(tree *root) {
     return temp;
 }
 
-
+// Removing user from bianry tree
 tree* removeUserBinary(tree *root, char *name) { 
     if(root == NULL)
     {
@@ -172,7 +182,7 @@ void printTabs(int num) {
     }
 }
 
-// Pre-order traversal
+// Pre-order traversal to display user ID, username and sites visited
 void displayDataBinary(tree *root, int level) {
     int i;
     if(root == NULL) 
@@ -200,7 +210,7 @@ void displayDataBinary(tree *root, int level) {
     printf("\n");
 }
 
-
+// Checking a site to inspect which users have been logged there
 void checkSiteBinary(tree *root, int site) { // in-order traversal
     if(root != NULL)
     {
@@ -216,7 +226,7 @@ void checkSiteBinary(tree *root, int site) { // in-order traversal
     }
 } 
 
-
+// Function to print tabs to help see the binary tree better
 void printTabsToFile(FILE *fp, int num) {
     for(int i=0 ; i < num ; i++)
     {
@@ -224,6 +234,7 @@ void printTabsToFile(FILE *fp, int num) {
     }
 }
 
+// Same as displayDataBinary, but printf -> fprintf to save to file
 void printTreeToFile(tree *root, FILE *fp, int level) {
     int i;
     if(root == NULL) 
@@ -251,6 +262,7 @@ void printTreeToFile(tree *root, FILE *fp, int level) {
     fprintf(fp, "end\n");
 }
 
+// Saving current data in the app to a file that already exists
 void saveDataBinary(tree *root) {
     FILE *fp;
     int size;

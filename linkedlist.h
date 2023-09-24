@@ -1,3 +1,14 @@
+/********************************************************************************************
+ * File: linkedlist.h
+ * Author: Ronaldo R Baker 
+ * Date: Last modified 24 SEP 2023
+ * Description:
+ * The functions in the linked list version of the contact tracing app are the simpler 
+ * versions used to execute each option from the switch case in the main file
+ * Each function related to linked list is labelled 'Linear', with the exception of 
+ * 'retrieveData' which can be utilised by both versions of the application.
+*********************************************************************************************/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -117,7 +128,7 @@ void insertUserLinear() {
     }
 }
 
-
+// Inputting a site number (integer) where a user has been
 void logSiteLinear() {
     int site, i = 0;
     char inputName [15];
@@ -154,7 +165,7 @@ void logSiteLinear() {
     }
 }
 
-
+// Removing user from linked list
 void removeUserLinear() {
     char inputName [15];
     bool userExist;
@@ -197,7 +208,7 @@ void removeUserLinear() {
     }  
 }
 
-
+// Displaying user ID numbers, username and sites visited
 void displayDataLinear() {
     curr = head;
     while(curr != NULL)
@@ -213,7 +224,7 @@ void displayDataLinear() {
     printf("End of list\n\n");
 }
 
-
+// Checking a site to inspect which users have been logged there
 int checkSiteLinear() {
     int site, i;
     char option [5];
@@ -243,7 +254,7 @@ int checkSiteLinear() {
     }
 }
 
-
+// Using the same logic from displayDataLinear to save to a file that already exists
 void saveDataLinear() {
     FILE *fp;
     int size, i;
@@ -287,7 +298,7 @@ void saveDataLinear() {
     }
 }
 
-
+// Printing data on console from a chosen file
 void retrieveData() {
     FILE *fp;
     int i;
