@@ -1,16 +1,25 @@
+/********************************************************************************************
+ * File: covid19dynamic_original.c
+ * Author: Ronaldo R Baker 
+ * Date: Last modified 28 AUG 2022
+ * Description:
+ * This is the original version of the console-based application which replicates the 
+ * NHS Contact Tracing App used in the COVID-19 pandemic. Two versions of the application 
+ * have been implemented, which uses two data structures - a linked list or a binary search tree. 
+ * The version can be chosen by the user by entering 'linkedlist' or 'binarytree' as an argument 
+ * when running the executable file in the command line.
+
+ * NOTE:
+ * This program is only make comparisons with the more update version. This file can be run, but may encounter
+ * a lot more exceptions and errors. 
+ * The binary tree version in this program is not fully functional. In particular, the remove user function
+ * does not work due to incorrect algorithm and the save function does not actually save to a file, but prints to
+ * console.
+ *********************************************************************************************/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
-/* There are two versions for almost every case in this program
-depending on which data structure the user wants to use.
-
-The user is expected to pass either "linkedlist" or "binarytree"
-as a parameter for this program when compiling and executing the file.
-This information will determine which set of functions, structs and variables are used
-
-Unable to complete balancing for the binary tree, which would have helped increase efficiency 
-as nodes were inserted or removed */
 
 //Struct for linked list
 typedef struct profile {
